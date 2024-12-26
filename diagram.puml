@@ -1,0 +1,60 @@
+@startuml
+class com.example.keeper.Caretaker {
+- Queue<Memento> mementoList
++ void push(Memento)
+}
+
+
+class com.example.keeper.Controller {
+- Pane drawingPanel
+- double initialX
+- double initialY
+- double mouseX
+- double mouseY
+- List<Shape> picture
+- List<Shape> selectedShapes
+- Caretaker caretaker
+- Originator originator
++ void initialize()
++ void addCircle1()
++ void addCircle2()
++ void addRectangle1()
++ void addRectangle2()
++ void addTriangle()
++ void addParallelogram()
++ void addHexagon()
+- void addShape(Shape)
+- void handleShapePress(Shape,MouseEvent)
++ void onDrag(MouseEvent)
++ void onEnd(MouseEvent)
++ void removeLastShape()
+}
+
+
+class com.example.keeper.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+class com.example.keeper.Originator {
+- Shape shape
++ void setShape(Shape)
++ Memento createMemento()
+}
+
+
+class com.example.keeper.Memento {
+- Shape shape
+- double width
+- Color color
++ double getWidth()
++ Color getStrokeColor()
++ Shape getState()
++ Shape initState()
+}
+
+
+
+
+javafx.application.Application <|-- com.example.keeper.Main
+@enduml
